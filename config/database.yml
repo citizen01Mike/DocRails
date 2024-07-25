@@ -1,0 +1,25 @@
+# ./database.yml
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: <%= ENV['DB_HOST'] %>
+  port: 5432
+
+development:
+  <<: *default
+  database: dogs
+
+test:
+  <<: *default
+  database: dogs_test  
+
+production:
+  <<: *default
+  database: dogs_production
+  username: dogs
+  password: <%= ENV['DOGS_DATABASE_PASSWORD'] %>
+  host: <%= ENV['MYAPP_DATABASE_HOST'] %>
