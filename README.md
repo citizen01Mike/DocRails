@@ -1,24 +1,58 @@
-# README
+# Dogs App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Dockerized Rails application and PostgreSQL database.
 
-Things you may want to cover:
+## Prerequisites
 
-* Ruby version
+Ensure you have the following installed:
+- Docker
+- Docker Compose
 
-* System dependencies
+## Getting Started
 
-* Configuration
+1. **Clone the repository:**
 
-* Database creation
+    ```sh
+    git clone https://github.com/citizen01Mike/DocRails.git
+    ```
 
-* Database initialization
+2. **Set up the environment variables:**
 
-* How to run the test suite
+    ```sh
+    cp .env.example .env
+    ```
 
-* Services (job queues, cache servers, search engines, etc.)
+    Modify `.env` with your specific settings.
 
-* Deployment instructions
+3. **Build and run the Docker containers:**
 
-* ...
+    ```sh
+    docker-compose up --build
+    ```
+
+4. **Set up the database:**
+
+    ```sh
+    docker-compose run web rails db:create
+    docker-compose run web rails db:migrate
+    ```
+
+5. **Access the application:**
+
+    Open a web browser and navigate to `http://localhost:3000`.
+
+6. **Stopping the containers:**
+
+    ```sh
+    docker-compose down
+    ```
+
+## Troubleshooting
+
+- Ensure that no other service is using ports 3000 or 5432.
+- Check Docker and Docker Compose logs for any issues.
+- Verify environment variables in the `.env` file are correct.
+
+## License
+
+Distributed under the MIT License.
